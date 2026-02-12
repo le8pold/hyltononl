@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HYLTON.ONL</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    #gate {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    input {
+        width: 237px;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 5px;
+        border: 2px solid black;
+        font-size: 24px;
+        text-align: center;
+        outline: none;
+        background: white;
+        display: block;
+    }
+    button {
+        width: 250px;
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid black;
+        background: white;
+        cursor: pointer;
+    }
+    button:hover {
+        background: black;
+        color: white;
+        transition: 0.2s;
+    }
+    #error {
+        color: black;
+        margin-top: 5px;
+        height: 20px;
+        font-size: 14px;
+        font-family: monospace;
+    }
+    #realSite {
+        display: none;
+        padding: 60px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<div id="gate">
+    <input type="password" id="codeInput" placeholder="">
+    <button id="verifyBtn" onclick="startVerification()">VERIFY</button>
+    <p id="error"></p>
+</div>
+<div id="realSite">
+    <h1>Welcome</h1>
+    <p>Ts is ts secret site.</p>
+    <p><b><a href="https://www.instagram.com/le8pold" style="color:black; text-decoration: none;">@le8pold</a></b> on instagram</p>
+    <p><b><a href="https://www.tiktok.com/@le8pold" style="color:black; text-decoration: none;">@le8pold</a></b> on tiktok</p>
+    <p><b><a href="https://www.t.me/le8pold" style="color:black; text-decoration: none;">@le8pold</a></b> on telegram</p>
+    <p><b><a href="https://www.instantusername.com/?q=le8pold" style="color:black; text-decoration: none;">@le8pold</a></b> basically everywhere</p>
+</div>
+<script>
+    const errorEl = document.getElementById("error");
+    const inputEl = document.getElementById("codeInput");
+    const btnEl = document.getElementById("verifyBtn");
+
+    function startVerification() {
+        const code = inputEl.value;
+        const frames = ['|', '/', '-', '\\'];
+        let i = 0;
+        errorEl.style.color = "black";
+        errorEl.textContent = frames[0];
+        btnEl.disabled = true;
+        const duration = Math.floor(Math.random() * (6000 - 200 + 1)) + 200;
+        const spinnerInterval = setInterval(() => {
+            i = (i + 1) % frames.length;
+            errorEl.textContent = frames[i];
+        }, 100);
+        setTimeout(() => {
+            clearInterval(spinnerInterval);
+            btnEl.disabled = false;
+            checkCode(code);
+        }, duration);
+    }
+
+    function checkCode(code) {
+        if (code === "67") {
+            sessionStorage.setItem("accessGranted", "true");
+            grantAccess();
+        } else {
+            errorEl.style.color = "rgb(255,0,0)";
+            errorEl.textContent = "Wrong code";
+        }
+    }
+
+    function grantAccess() {
+        document.getElementById("gate").style.display = "none";
+        document.getElementById("realSite").style.display = "block";
+    }
+
+    inputEl.addEventListener("keypress", function(e) {
+        if (e.key === "Enter") startVerification();
+    });
+
+    if (sessionStorage.getItem("accessGranted") === "true") {
+        grantAccess();
+    }
+</script>
+</body>
+</html>
