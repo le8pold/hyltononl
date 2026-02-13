@@ -70,7 +70,7 @@
     <input type="password" id="codeInput" onfocus="resetUI()">
     <button id="verifyBtn" onclick="startVerification()">VERIFY</button>
     <p style="margin-top: 10px; font-size: 14px; color: black; font-family: Arial, sans-serif;">made by leo and barney</p>
-    <p style="margin-top: 10px; font-size: 14px; color: black; font-family: Arial, sans-serif;">v1.27.0</p>
+    <p style="margin-top: 10px; font-size: 14px; color: black; font-family: Arial, sans-serif;">v1.28.0</p>
 </div>
 <div id="realSite">
     <h1>Welcome</h1>
@@ -142,9 +142,12 @@
         else if (code === "barney") {
             showbarney();
         }
-        else if (code === "hoh?" || code === "hoh") {
+        else if (code === "hoh?" || code === "hoh" || code === "huh" || code = "huh?") {
             showvalentine();
         }
+        else if (code === "lucas") {
+            showlucas();
+        } 
         else {
             btnEl.classList.add("error-state");
             btnEl.textContent = "WRONG CODE";
@@ -229,6 +232,14 @@
             </div>
         `;
     }
+    function showlucas() {
+        document.getElementById("gate").style.display = "none";
+        document.body.innerHTML = `
+            <div style="margin:0; padding:0; width:100vw; height:100vh; overflow:hidden;">
+                <img src="IMG_1563.png" alt="lucasstretched" 
+                     style="width:100vw; height:100vh; object-fit:fill; display:block;">
+            </div>
+        `;
     function showdog() {
         document.getElementById("gate").style.display = "none";
         document.body.innerHTML = `
@@ -250,6 +261,7 @@
 </script>
 </body>
 </html>
+
 
 
 
