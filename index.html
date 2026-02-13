@@ -111,17 +111,33 @@
         if (code === "67") {
             sessionStorage.setItem("accessGranted", "true");
             grantAccess();
-        } else {
+        } 
+        else if (code === "ep") {
+            playSecretVideo();
+        } 
+        else {
             btnEl.classList.add("error-state");
             btnEl.textContent = "WRONG CODE";
             btnEl.disabled = true;
         }
-    }
+    }   
+
 
     function grantAccess() {
         document.getElementById("gate").style.display = "none";
         document.getElementById("realSite").style.display = "block";
     }
+    
+    function playSecretVideo() {
+        document.getElementById("gate").style.display = "none";
+
+        document.body.innerHTML += `
+            <video autoplay controls style="width:100vw; height:100vh; object-fit:cover;">
+                <source src="video.mp4" type="video/mp4">
+            </video>
+        `;
+    }
+
 
     inputEl.addEventListener("keypress", function(e) {
         if (e.key === "Enter") startVerification();
@@ -133,6 +149,7 @@
 </script>
 </body>
 </html>
+
 
 
 
