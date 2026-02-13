@@ -31,26 +31,32 @@
         outline: none;
         background: white;
         display: block;
+        font-family: Arial, sans-serif;
     }
     button {
         width: 250px;
+        height: 44px;
         padding: 10px;
         font-size: 16px;
         border: 2px solid black;
         background: white;
         cursor: pointer;
-    }
-    button:hover {
-        background: black;
-        color: white;
+        font-family: Arial, sans-serif;
+        text-transform: uppercase;
         transition: 0.2s;
     }
-    #error {
+    button:hover:not(:disabled) {
+        background: black;
+        color: white;
+    }
+    button:disabled {
+        cursor: default;
+        background: white;
         color: black;
-        margin-top: 5px;
-        height: 20px;
-        font-size: 14px;
-        font-family: monospace;
+    }
+    button.error-state {
+        color: rgb(255, 0, 0);
+        border-color: black;
     }
     #realSite {
         display: none;
@@ -61,35 +67,41 @@
 </head>
 <body>
 <div id="gate">
-    <input type="password" id="codeInput" placeholder="">
+    <input type="password" id="codeInput" onfocus="resetUI()">
     <button id="verifyBtn" onclick="startVerification()">VERIFY</button>
-    <p id="error"></p>
 </div>
 <div id="realSite">
     <h1>Welcome</h1>
     <p>Ts is ts secret site.</p>
-    <p><b><a href="https://www.instagram.com/le8pold" style="color:black; text-decoration: none;">@le8pold</a></b> on instagram</p>
 </div>
 <script>
-    const errorEl = document.getElementById("error");
     const inputEl = document.getElementById("codeInput");
     const btnEl = document.getElementById("verifyBtn");
+    let isProcessing = false;
+
+    function resetUI() {
+        inputEl.value = "";
+        btnEl.textContent = "VERIFY";
+        btnEl.disabled = false;
+        btnEl.classList.remove("error-state");
+        isProcessing = false;
+    }
 
     function startVerification() {
-        const code = inputEl.value;
+        const code = inputEl.value.trim();
+        if (!code || isProcessing) return;
+        isProcessing = true;
         const frames = ['|', '/', '-', '\\'];
         let i = 0;
-        errorEl.style.color = "black";
-        errorEl.textContent = frames[0];
         btnEl.disabled = true;
-        const duration = Math.floor(Math.random() * (6000 - 200 + 1)) + 200;
+        btnEl.textContent = frames[0];
+        const duration = Math.floor(Math.random() * (2000 - 200 + 1)) + 200;
         const spinnerInterval = setInterval(() => {
             i = (i + 1) % frames.length;
-            errorEl.textContent = frames[i];
+            btnEl.textContent = frames[i];
         }, 100);
         setTimeout(() => {
             clearInterval(spinnerInterval);
-            btnEl.disabled = false;
             checkCode(code);
         }, duration);
     }
@@ -99,8 +111,9 @@
             sessionStorage.setItem("accessGranted", "true");
             grantAccess();
         } else {
-            errorEl.style.color = "rgb(255,0,0)";
-            errorEl.textContent = "Wrong code";
+            btnEl.classList.add("error-state");
+            btnEl.textContent = "WRONG CODE";
+            btnEl.disabled = true;
         }
     }
 
@@ -118,6 +131,6 @@
     }
 </script>
 </body>
-
 </html>
+
 
