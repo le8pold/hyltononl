@@ -112,9 +112,12 @@
             sessionStorage.setItem("accessGranted", "true");
             grantAccess();
         } 
-        else if (code === "ep") {
-            playSecretVideo();
+        else if (code === "dance") {
+            playdancevid();
         } 
+        else if (code === "epstein") {
+            playepvid();
+        }
         else {
             btnEl.classList.add("error-state");
             btnEl.textContent = "WRONG CODE";
@@ -128,7 +131,7 @@
         document.getElementById("realSite").style.display = "block";
     }
     
-    function playSecretVideo() {
+    function playdancevid() {
         document.getElementById("gate").style.display = "none";
 
         document.body.innerHTML = `
@@ -138,6 +141,15 @@
         `;
     }
 
+    function playepvid() {
+        document.getElementById("gate").style.display = "none";
+
+        document.body.innerHTML = `
+            <video autoplay muted playsinline loop style="position:fixed; top:0; left:0; width:100vw; height:100vh; object-fit:cover;">
+                <source src="ep.mp4" type="ep/mp4">
+            </video>
+        `;
+    }
 
     inputEl.addEventListener("keypress", function(e) {
         if (e.key === "Enter") startVerification();
@@ -149,6 +161,7 @@
 </script>
 </body>
 </html>
+
 
 
 
