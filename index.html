@@ -118,6 +118,10 @@
         else if (code === "epstein") {
             playepvid();
         }
+        else if (code === "mateo") {
+            showmia();
+
+        }
         else {
             btnEl.classList.add("error-state");
             btnEl.textContent = "WRONG CODE";
@@ -150,6 +154,14 @@
             </video>
         `;
     }
+    function showMateoPhoto() {
+        document.getElementById("gate").style.display = "none";
+        document.body.innerHTML = `
+            <div style="display:flex; justify-content:center; align-items:center; height:100vh; background:white;">
+                <img src="img_1561.jpg" alt="Mateo" style="max-width:90%; max-height:90%; border: 2px solid black;">
+            </div>
+        `;
+    }
 
     inputEl.addEventListener("keypress", function(e) {
         if (e.key === "Enter") startVerification();
@@ -161,6 +173,7 @@
 </script>
 </body>
 </html>
+
 
 
 
