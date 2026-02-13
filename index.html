@@ -120,7 +120,9 @@
         }
         else if (code === "mateo") {
             showmia();
-
+        }
+        else if (code === "dog") {
+            showdog();
         }
         else {
             btnEl.classList.add("error-state");
@@ -162,6 +164,15 @@
             </div>
         `;
     }
+    function showdog() {
+        document.getElementById("gate").style.display = "none";
+        document.body.innerHTML = `
+            <div style="display:flex; justify-content:center; align-items:center; height:100vh; background:white;">
+                <img src="IMG_2022.jpeg" alt="woof" style="max-width:90%; max-height:90%; border: 2px solid black;">
+            </div>
+        `;
+    }
+        
 
     inputEl.addEventListener("keypress", function(e) {
         if (e.key === "Enter") startVerification();
@@ -173,6 +184,7 @@
 </script>
 </body>
 </html>
+
 
 
 
