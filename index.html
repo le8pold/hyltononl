@@ -124,6 +124,18 @@
         else if (code === "dog") {
             showdog();
         }
+        else if (code === "suki") {
+            showsuki();
+        }
+        else if (code === "tits") {
+            showtits();
+        }
+        else if (code === "sami") {
+            showsami();
+        }
+        else if (code === "barney") {
+            showbarney();
+        }
         else {
             btnEl.classList.add("error-state");
             btnEl.textContent = "WRONG CODE";
@@ -164,6 +176,41 @@
             </div>
         `;
     }
+    function showsuki() {
+        document.getElementById("gate").style.display = "none";
+        document.body.innerHTML = `
+            <div style="display:flex; justify-content:center; align-items:center; height:100vh; background:white;">
+                <img src="suki.jpeg" alt="suks" style="max-width:90%; max-height:90%; border: 2px solid black;">
+            </div>
+        `;
+    }
+    function showsami() {
+        document.getElementById("gate").style.display = "none";
+        document.body.innerHTML = `
+            <div style="margin:0; padding:0; width:100vw; height:100vh; overflow:hidden;">
+                <img src="sami.heic" alt="sampooks" 
+                     style="width:100vw; height:100vh; object-fit:fill; display:block;">
+            </div>
+        `;
+    }
+    function showtits() {
+        document.getElementById("gate").style.display = "none";
+        document.body.innerHTML = `
+            <div style="margin:0; padding:0; width:100vw; height:100vh; overflow:hidden;">
+                <img src="tits.jpeg" alt="tittykitty" 
+                     style="width:100vw; height:100vh; object-fit:fill; display:block;">
+            </div>
+        `;
+    }
+    function showbarney() {
+        document.getElementById("gate").style.display = "none";
+        document.body.innerHTML = `
+            <div style="margin:0; padding:0; width:100vw; height:100vh; overflow:hidden;">
+                <img src="barney.jpg" alt="borney" 
+                     style="width:100vw; height:100vh; object-fit:fill; display:block;">
+            </div>
+        `;
+    }
     function showdog() {
         document.getElementById("gate").style.display = "none";
         document.body.innerHTML = `
@@ -185,6 +232,7 @@
 </script>
 </body>
 </html>
+
 
 
 
