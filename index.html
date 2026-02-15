@@ -145,9 +145,12 @@
         else if (code === "hoh?" || code === "hoh" || code === "huh" || code === "huh?") {
             showvalentine();
         }
-        else if (code === "lucas") {
+        else if (code === "lucas" ) {
             showlucas();
         } 
+        else if (code === "yourenextpal" || code == "urnextpal" || code == "yournextpal" ) {
+            showynp();
+        }  
         else {
             btnEl.classList.add("error-state");
             btnEl.textContent = "WRONG CODE";
@@ -241,6 +244,15 @@
             </div>
         `;
     }
+    function showynp() {
+        document.getElementById("gate").style.display = "none";
+        document.body.innerHTML = `
+            <div style="margin:0; padding:0; width:100vw; height:100vh; overflow:hidden;">
+                <img src="yourenextpal.jpeg" alt="sigma" 
+                     style="width:100vw; height:100vh; object-fit:fill; display:block;">
+            </div>
+        `;
+    }
     function showdog() {
         document.getElementById("gate").style.display = "none";
         document.body.innerHTML = `
@@ -262,6 +274,7 @@
 </script>
 </body>
 </html>
+
 
 
 
