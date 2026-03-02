@@ -142,9 +142,6 @@
         else if (code === "barney") {
             showbarney();
         }
-        else if (code === "hoh?" || code === "hoh" || code === "huh" || code === "huh?") {
-            showvalentine();
-        }
         else if (code === "lucas" ) {
             showlucas();
         } 
@@ -208,15 +205,6 @@
             </div>
         `;
     }
-    function showvalentine() {
-        document.getElementById("gate").style.display = "none";
-        document.body.innerHTML = `
-            <div style="margin:0; padding:0; width:100vw; height:100vh; overflow:hidden;">
-                <img src="heart.png" alt="reload page i guess and enter the code again" 
-                     style="width:100vw; height:100vh; object-fit:fill; display:block;">
-            </div>
-        `;
-    }
     function showtits() {
         document.getElementById("gate").style.display = "none";
         document.body.innerHTML = `
@@ -274,3 +262,4 @@
 </script>
 </body>
 </html>
+
