@@ -130,6 +130,9 @@
         else if (code === "dog") {
             showdog();
         }
+        else if (code === "adam") {
+            showgilbert();
+        }
         else if (code === "suki") {
             showsuki();
         }
@@ -232,6 +235,15 @@
             </div>
         `;
     }
+    function showgilbert() {
+        document.getElementById("gate").style.display = "none";
+        document.body.innerHTML = `
+            <div style="margin:0; padding:0; width:100vw; height:100vh; overflow:hidden;">
+                <img src="IMG_1565.jpeg" alt="gilbert" 
+                     style="width:100vw; height:100vh; object-fit:fill; display:block;">
+            </div>
+        `;
+    }
     function showynp() {
         document.getElementById("gate").style.display = "none";
         document.body.innerHTML = `
@@ -262,4 +274,5 @@
 </script>
 </body>
 </html>
+
 
