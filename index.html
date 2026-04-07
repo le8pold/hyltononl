@@ -81,7 +81,7 @@
     <input type="password" id="codeInput" onfocus="resetUI()">
     <button id="verifyBtn" onclick="startVerification()">VERIFY</button>
     <p style="margin-top: 10px; font-size: 14px; color: black; font-family: Arial, sans-serif;">made by leo.</p>
-    <p style="margin-top: 10px; font-size: 14px; color: black; font-family: Arial, sans-serif;">v1.31.5</p>
+    <p style="margin-top: 10px; font-size: 14px; color: black; font-family: Arial, sans-serif;">v1.32.0</p>
 </div>
 <div id="realSite">
     <h1>Welcome</h1>
@@ -188,12 +188,24 @@
 
     function playepvid() {
         document.getElementById("gate").style.display = "none";
-
         document.body.innerHTML = `
-            <video autoplay muted playsinline loop style="position:fixed; top:0; left:0; width:100vw; height:100vh; object-fit:cover;">
+            <video id="epVideo" autoplay muted playsinline loop style="position:fixed; top:0; left:0; width:100vw; height:100vh; object-fit:cover;">
                 <source src="ep.mp4" type="video/mp4">
             </video>
+            <audio id="epMusic" loop>
+                <source src="Epmusi .mp3" type="audio/mpeg">
+            </audio>
         `;
+        const music = document.getElementById("epMusic");
+        function startMusicOnce() {
+            music.play().catch(err => {
+                console.log("Music blocked until user interaction:", err);
+            });
+            document.removeEventListener("click", startMusicOnce);
+            document.removeEventListener("touchstart", startMusicOnce);
+        }
+        document.addEventListener("click", startMusicOnce);
+        document.addEventListener("touchstart", startMusicOnce);
     }
     function showmia() {
         document.getElementById("gate").style.display = "none";
