@@ -132,17 +132,8 @@
         else if (code === "dance") {
             playdancevid();
         } 
-        else if (code === "epstein") {
-            playepvid();
-        }
         else if (code === "mateo") {
             showmia();
-        }
-        else if (code === "dog") {
-            showdog();
-        }
-        else if (code === "adam") {
-            showgilbert();
         }
         else if (code === "suki") {
             showsuki();
@@ -184,28 +175,6 @@
                 <source src="video.mp4" type="video/mp4">
             </video>
         `;
-    }
-
-    function playepvid() {
-        document.getElementById("gate").style.display = "none";
-        document.body.innerHTML = `
-            <video id="epVideo" autoplay muted playsinline loop style="position:fixed; top:0; left:0; width:100vw; height:100vh; object-fit:cover;">
-                <source src="ep.mp4" type="video/mp4">
-            </video>
-            <audio id="epMusic" loop>
-                <source src="Epmusi .mp3" type="audio/mpeg">
-            </audio>
-        `;
-        const music = document.getElementById("epMusic");
-        function startMusicOnce() {
-            music.play().catch(err => {
-                console.log("Music blocked until user interaction:", err);
-            });
-            document.removeEventListener("click", startMusicOnce);
-            document.removeEventListener("touchstart", startMusicOnce);
-        }
-        document.addEventListener("click", startMusicOnce);
-        document.addEventListener("touchstart", startMusicOnce);
     }
     function showmia() {
         document.getElementById("gate").style.display = "none";
@@ -259,29 +228,11 @@
             </div>
         `;
     }
-    function showgilbert() {
-        document.getElementById("gate").style.display = "none";
-        document.body.innerHTML = `
-            <div style="margin:0; padding:0; width:100vw; height:100vh; overflow:hidden;">
-                <img src="IMG_1565.jpeg" alt="gilbert" 
-                     style="width:100vw; height:100vh; object-fit:fill; display:block;">
-            </div>
-        `;
-    }
     function showynp() {
         document.getElementById("gate").style.display = "none";
         document.body.innerHTML = `
             <div style="margin:0; padding:0; width:100vw; height:100vh; overflow:hidden;">
                 <img src="yourenextpal.jpeg" alt="sigma" 
-                     style="width:100vw; height:100vh; object-fit:fill; display:block;">
-            </div>
-        `;
-    }
-    function showdog() {
-        document.getElementById("gate").style.display = "none";
-        document.body.innerHTML = `
-            <div style="margin:0; padding:0; width:100vw; height:100vh; overflow:hidden;">
-                <img src="IMG_1563.jpeg" alt="woof" 
                      style="width:100vw; height:100vh; object-fit:fill; display:block;">
             </div>
         `;
